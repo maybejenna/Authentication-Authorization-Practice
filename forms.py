@@ -34,6 +34,6 @@ class LoginForm(FlaskForm):
 
 
 class FeedbackForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired(), Length(max=100)])
+    title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Submit')

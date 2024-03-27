@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, session, flash, url_for
 from models import connect_db, db, User, Feedback, bcrypt  # Make sure bcrypt is imported here
+from flask_migrate import Migrate
 from forms import RegistrationForm, LoginForm  # Corrected import for LoginForm
 from wtforms import StringField, PasswordField, validators
 from wtforms.validators import Email, DataRequired, Length
@@ -15,6 +16,8 @@ app.config["SECRET_KEY"] = "abc123"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 bcrypt = Bcrypt(app)
+
+migrate = Migrate(app, db)
 
 connect_db(app)
 
